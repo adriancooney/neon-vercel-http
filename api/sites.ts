@@ -9,7 +9,7 @@ export default async (req: Request, ctx: any) => {
   const longitude = parseFloat(req.headers.get('x-vercel-ip-longitude') ?? '-122.47');
   const latitude = parseFloat(req.headers.get('x-vercel-ip-latitude') ?? '37.81');
 
-  const sites = await db(process.env.DATABASE_URL!)`
+  const sites = await db(process.env.POSTGRES_URL!)`
     SELECT 
       id_no, name_en, category,
       'https://whc.unesco.org/en/list/' || id_no || '/' AS link,
